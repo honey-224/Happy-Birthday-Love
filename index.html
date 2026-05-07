@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Surprise for Avoy ❤️</title>
+    <title>A Special Surprise for Avoy ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; background: #000; color: white; font-family: 'Poppins', sans-serif; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        body { margin: 0; background: #000; color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%); opacity: 0.9; z-index: -1; }
         .screen { display: none; text-align: center; padding: 20px; animation: fadeIn 1.5s ease-in; width: 90%; max-width: 500px; }
         .active { display: block; }
@@ -14,7 +14,8 @@
         .card { background: rgba(255, 255, 255, 0.2); padding: 30px; border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .btn { background: #fff; color: #ff4757; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; }
         .btn:hover { transform: scale(1.1); background: #ff4757; color: #fff; }
-        .message-text { line-height: 1.6; font-size: 1rem; text-align: justify; margin-top: 20px; }
+        .message-text { line-height: 1.6; font-size: 1rem; text-align: justify; margin-top: 20px; margin-bottom: 20px; }
+        .spotify-container { margin-top: 20px; border-radius: 12px; overflow: hidden; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .heart { position: fixed; color: rgba(255, 255, 255, 0.8); pointer-events: none; z-index: 0; animation: float 4s linear infinite; }
         @keyframes float { 0% { transform: translateY(110vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
@@ -34,43 +35,36 @@
 
     <div id="screen2" class="screen">
         <div class="card">
-            <h1>It's YOU! ✨</h1>
-            <p>Because someone loves you more than anything... <br> Ready for your surprise?</p>
-            <button class="btn" onclick="startSurprise()">YES, I'M READY! 🎵</button>
-        </div>
-    </div>
-
-    <div id="screen3" class="screen">
-        <div class="card">
             <h1>Happy Birthday!! ✨</h1>
-            <h3 style="font-family: 'Dancing Script';">My LOVE, My AVOY 💖</h3>
+            <h3 style="font-family: 'Dancing Script'; font-size: 2rem;">My LOVE, My AVOY 💖</h3>
+            
             <div class="message-text">
                 I hope this year brings you everything you deserve. I'm with you every step of the way. You are the best thing, that's ever happened to me. I am happiest when I am with you. With you I know I can face anything life throws at us. No one understands me like you do. I appreciate everything you do for us. Thank you for always being there for me. No matter what happens, I'll always stand by you. I am so proud of you... 💝
             </div>
-            <p style="margin-top: 20px; font-weight: 600;">I love you so much my man 💌😙</p>
+
+            <p style="font-weight: 600;">Play our song below 🎵</p>
+            
+            <div class="spotify-container">
+                <iframe src="https://open.spotify.com/embed/track/2" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+
+            <p style="margin-top: 20px; font-style: italic; font-size: 0.9rem;">I love you so much my man 💌😙</p>
         </div>
     </div>
-
-    <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    </audio>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
         function nextScreen(screenNum) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen' + screenNum).classList.add('active');
+            
+            if(screenNum === 2) {
+                startEffects();
+            }
         }
 
-        function startSurprise() {
-            const music = document.getElementById('bgMusic');
-            music.play();
-            nextScreen(3);
-            
-            // Confetti effect
+        function startEffects() {
             confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-
-            // Start hearts
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');

@@ -3,129 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love! ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>A Surprise for Avoy ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: #fff5f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #444;
-            overflow-x: hidden;
-        }
-        .card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(255, 107, 129, 0.2);
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            border: 1px solid #ffdde1;
-            position: relative;
-            z-index: 1;
-        }
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            color: #ff4757;
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.4rem;
-            color: #e84393;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-        }
-        .message-content {
-            line-height: 1.8;
-            font-size: 1.05rem;
-            color: #555;
-            text-align: justify;
-            margin-bottom: 30px;
-        }
-        .signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: #ff4757;
-            margin-top: 20px;
-        }
-        .btn {
-            background: #ff6b81;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 107, 129, 0.4);
-        }
-        .btn:hover {
-            background: #ff4757;
-            transform: scale(1.05);
-        }
-        /* Floating hearts animation */
-        .heart {
-            position: fixed;
-            color: #ff7675;
-            font-size: 20px;
-            user-select: none;
-            pointer-events: none;
-            z-index: 0;
-            animation: move 3s linear infinite;
-        }
-        @keyframes move {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-        }
+        body { margin: 0; background: #000; color: white; font-family: 'Poppins', sans-serif; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%); opacity: 0.9; z-index: -1; }
+        .screen { display: none; text-align: center; padding: 20px; animation: fadeIn 1.5s ease-in; width: 90%; max-width: 500px; }
+        .active { display: block; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; margin-bottom: 20px; }
+        .card { background: rgba(255, 255, 255, 0.2); padding: 30px; border-radius: 20px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .btn { background: #fff; color: #ff4757; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; margin-top: 20px; transition: 0.3s; }
+        .btn:hover { transform: scale(1.1); background: #ff4757; color: #fff; }
+        .message-text { line-height: 1.6; font-size: 1rem; text-align: justify; margin-top: 20px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .heart { position: fixed; color: rgba(255, 255, 255, 0.8); pointer-events: none; z-index: 0; animation: float 4s linear infinite; }
+        @keyframes float { 0% { transform: translateY(110vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Happy Birthday!! ✨</h1>
-    <h2>My LOVE, My AVOY 💖</h2>
-    
-    <div class="message-content">
-        I hope this year brings you everything you deserve. I'm with you every step of the way. You are the best thing, that's ever happened to me. I am happiest when I am with you. With you I know I can face anything life throws at us. No one understands me like you do. I appreciate everything you do for us. Thank you for always being there for me. No matter what happens, I'll always stand by you. I am so proud of you... 💝
+    <div class="bg-overlay"></div>
+
+    <div id="screen1" class="screen active">
+        <div class="card">
+            <h1>Hey Avoy... ❤️</h1>
+            <p>Do you know who is the luckiest man in the world today?</p>
+            <button class="btn" onclick="nextScreen(2)">I don't know, who?</button>
+        </div>
     </div>
 
-    <button class="btn" onclick="celebrate()">Click for a Surprise!</button>
-    
-    <div class="signature">
-        I love you so much my man 💌😙
+    <div id="screen2" class="screen">
+        <div class="card">
+            <h1>It's YOU! ✨</h1>
+            <p>Because someone loves you more than anything... <br> Ready for your surprise?</p>
+            <button class="btn" onclick="startSurprise()">YES, I'M READY! 🎵</button>
+        </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-<script>
-    function celebrate() {
-        // Confetti effect
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#ff6b81', '#ff4757', '#f8a5c2']
-        });
-    }
+    <div id="screen3" class="screen">
+        <div class="card">
+            <h1>Happy Birthday!! ✨</h1>
+            <h3 style="font-family: 'Dancing Script';">My LOVE, My AVOY 💖</h3>
+            <div class="message-text">
+                I hope this year brings you everything you deserve. I'm with you every step of the way. You are the best thing, that's ever happened to me. I am happiest when I am with you. With you I know I can face anything life throws at us. No one understands me like you do. I appreciate everything you do for us. Thank you for always being there for me. No matter what happens, I'll always stand by you. I am so proud of you... 💝
+            </div>
+            <p style="margin-top: 20px; font-weight: 600;">I love you so much my man 💌😙</p>
+        </div>
+    </div>
 
-    // Floating hearts
-    setInterval(() => {
-        const heart = document.createElement('div');
-        heart.classList.add('heart');
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }, 500);
-</script>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function nextScreen(screenNum) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('screen' + screenNum).classList.add('active');
+        }
+
+        function startSurprise() {
+            const music = document.getElementById('bgMusic');
+            music.play();
+            nextScreen(3);
+            
+            // Confetti effect
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
+            // Start hearts
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }, 300);
+        }
+    </script>
 </body>
 </html>

@@ -7,31 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; background: #000; color: white; font-family: 'Poppins', sans-serif; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        
-        /* ব্যাকগ্রাউন্ড এনিমেশন */
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%); opacity: 0.9; z-index: -1; }
-        
-        /* স্ক্রিন সেটিংস */
         .screen { display: none; text-align: center; padding: 20px; animation: fadeIn 1.2s ease-in; width: 90%; max-width: 500px; }
         .active { display: block; }
-        
         h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; margin-bottom: 20px; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
         p { font-size: 1.1rem; line-height: 1.5; margin-bottom: 25px; }
-
         .card { background: rgba(255, 255, 255, 0.2); padding: 40px 30px; border-radius: 25px; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
-        
-        /* বাটন স্টাইল */
-        .btn { background: #fff; color: #ff4757; border: none; padding: 12px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .btn { background: #fff; color: #ff4757; border: none; padding: 12px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s; }
         .btn:hover { transform: scale(1.1); background: #ff4757; color: #fff; }
-
-        .message-text { line-height: 1.6; font-size: 1.05rem; text-align: justify; margin-top: 20px; height: 250px; overflow-y: auto; padding-right: 10px; }
-        
-        /* গান প্লেয়ার উইজেট */
-        .spotify-widget { margin-top: 20px; border-radius: 12px; overflow: hidden; }
-
+        .message-text { line-height: 1.6; font-size: 1.05rem; text-align: justify; margin-top: 20px; max-height: 200px; overflow-y: auto; padding-right: 5px; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-        
-        /* উড়ন্ত হার্ট */
         .heart { position: fixed; color: rgba(255, 255, 255, 0.8); pointer-events: none; z-index: 0; animation: float 4s linear infinite; }
         @keyframes float { 0% { transform: translateY(110vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
     </style>
@@ -74,42 +59,36 @@
 
     <div id="screen5" class="screen">
         <div class="card">
-            <h1 style="font-size: 2.5rem; color: #fff;">Happy Birthday!! ✨</h1>
-            <h3 style="font-family: 'Dancing Script'; font-size: 1.8rem; margin-top: -10px;">My LOVE, My AVOY 💖</h3>
-            
+            <h1>Happy Birthday!! ✨</h1>
+            <h3 style="font-family: 'Dancing Script'; font-size: 1.8rem;">My LOVE, My AVOY 💖</h3>
             <div class="message-text">
                 I hope this year brings you everything you deserve. I'm with you every step of the way. You are the best thing, that's ever happened to me. I am happiest when I am with you. With you I know I can face anything life throws at us. No one understands me like you do. I appreciate everything you do for us. Thank you for always being there for me. No matter what happens, I'll always stand by you. I am so proud of you... 💝
             </div>
-
-            <div class="spotify-widget">
-                <iframe src="https://open.spotify.com/embed/track/0T5SIrInAFmS69m9Zf9Y9p?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            </div>
-
-            <p style="margin-top: 15px; font-weight: 600; font-style: italic;">I love you so much my man 💌😙</p>
+            <p style="margin-top: 15px; font-weight: 600; font-style: italic;">Until I Found You... 🎶</p>
+            <p style="font-size: 0.8rem;">I love you so much my man 💌😙</p>
         </div>
     </div>
 
+    <audio id="bgMusic">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    
     <script>
-        // পেজ পরিবর্তনের ফাংশন
         function nextScreen(screenNum) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('screen' + screenNum).classList.add('active');
         }
 
-        // ফাইনাল সারপ্রাইজ ফাংশন
         function startFinalSurprise() {
             nextScreen(5);
+            const music = document.getElementById('bgMusic');
             
-            // কনফেত্তি (রঙিন কাগজ ওড়া)
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
+            // গান প্লে করার চেষ্টা
+            music.play().catch(error => console.log("Playback failed"));
 
-            // হার্ট রেইন শুরু
+            confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
@@ -118,13 +97,10 @@
                 heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
                 heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
                 document.body.appendChild(heart);
-                
-                // হার্ট গুলো মুছে ফেলা (মেমরি ক্লিন রাখার জন্য)
-                setTimeout(() => {
-                    heart.remove();
-                }, 4000);
+                setTimeout(() => heart.remove(), 4000);
             }, 300);
         }
     </script>
 </body>
 </html>
+            

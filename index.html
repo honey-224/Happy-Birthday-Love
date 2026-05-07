@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Surprise ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&family=Satisfy&display=swap" rel="stylesheet">
     <style>
         body { margin: 0; background: #000; color: white; font-family: 'Poppins', sans-serif; overflow: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         .bg-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%); opacity: 0.9; z-index: -1; }
@@ -16,6 +16,8 @@
         .btn { background: #fff; color: #ff4757; border: none; padding: 12px 35px; border-radius: 50px; font-weight: bold; cursor: pointer; font-size: 1.1rem; transition: 0.3s; margin: 5px; }
         .btn:hover { transform: scale(1.1); background: #ff4757; color: #fff; }
         .message-text { line-height: 1.6; font-size: 1.05rem; text-align: justify; margin-top: 20px; max-height: 250px; overflow-y: auto; padding-right: 10px; }
+        .special-name { color: #ff0000; font-family: 'Dancing Script', cursive; font-size: 2.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .final-quote { font-family: 'Satisfy', cursive; color: #fffb00; font-size: 1.5rem; margin-top: 25px; }
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
         .floating-emoji { position: fixed; pointer-events: none; z-index: 0; animation: float 4s linear infinite; }
         @keyframes float { 0% { transform: translateY(110vh) scale(0); opacity: 1; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
@@ -76,12 +78,12 @@
     <div id="screen7" class="screen">
         <div class="card">
             <h1>Happy Birthday!! ✨</h1>
-            <h3 style="font-family: 'Dancing Script'; font-size: 1.8rem;">My LOVE, My AVOY 💖</h3>
+            <div class="special-name">My LOVE, My AVOY 💖</div>
             <div class="message-text">
                 I hope this year brings you everything you deserve. I'm with you every step of the way. You are the best thing that's ever happened to me. I am happiest when I am with you. With you, I know I can face anything life throws at us. No one understands me like you do. I appreciate everything you do for us. Thank you for always being there for me. No matter what happens, I'll always stand by you. I am so proud of you... 💝
             </div>
-            <p style="margin-top: 25px; font-weight: 600; font-style: italic; font-size: 1rem;">I love you so much my man 💌</p>
-            <p style="font-size: 1.5rem;">💌😙💍</p>
+            <div class="final-quote">I Love you My Man 💌</div>
+            <p style="font-size: 1.5rem; margin-top: 10px;">😙💍</p>
         </div>
     </div>
 
@@ -106,18 +108,13 @@
         }
 
         function startKissingEffect() {
-            // Start floating kisses
             emojiInterval = setInterval(() => spawnEmoji('😘'), 300);
         }
 
         function startFinalSurprise() {
-            clearInterval(emojiInterval); // Clear kisses
+            clearInterval(emojiInterval);
             nextScreen(7);
-            
-            // Confetti effect
             confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-
-            // Start floating hearts for final screen
             setInterval(() => spawnEmoji('❤️'), 300);
         }
     </script>
